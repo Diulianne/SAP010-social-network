@@ -14,7 +14,7 @@ export default async () => {
   console.log(dados);
 
   const templatePerfil = `
- <header>
+ <header class="inicio">
   <nav class="icones-header">
  <a href="#feed" class="img-voltar" id="iconeVoltar"><img src=${voltar} alt="icone voltar" title="Ícone para Voltar"></a>
   <a href="#infopage" id="iconeLoguinho">
@@ -23,6 +23,7 @@ export default async () => {
   </nav>
   </header>
   <section class= "dados-usuario">
+  <h1> EM CONSTRUÇÃO </H1>
   <figure><img id="perfil" class="img-perfil" src=${imgPerfil} alt="Imagem de Perfil" title="Sua foto de Perfil"></figure>
   <p> MEU PERFIL </p>
   <p> SOU PACIENTE </p>

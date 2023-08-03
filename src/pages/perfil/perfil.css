@@ -13,18 +13,18 @@
 	width: 100%;
 	padding: 2%;
 	background-color: #F6F2E2;
-	height: 105px;
+	height: 90px;
 }
 
 .img-loguinhoP {
-	width: 85px
+	width: 85px;
 		/* height:100px; */
 
 }
 
 .img-perfil {
-	width: 157px;
-	height: 157px;
+	width: 137px;
+	height: 137px;
 }
 
 .img-voltar {
@@ -53,6 +53,9 @@ footer{
 
 
 @media screen and (min-width: 768px) {
+	inicio{
+		height: 50px;
+	}
 	.icones-header {
 		background-color: #3B5A2B;
 		justify-content: space-between;

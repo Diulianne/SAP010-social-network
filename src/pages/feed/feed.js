@@ -75,10 +75,12 @@ export default async () => {
         <strong>${dadosUsuarioLogado.displayName}</strong>
         <p>Paciente</p>
       </div>
-      <textarea class="text-area" name="postagem" id="text-mensagem" cols="30" rows="10"></textarea>
-      <img src=${excluir} alt="Excluir" title="Excluir" id="apagaTexto">
+      <textarea class="text-area" name="postagem" id="text-mensagem" cols="30" rows="10"></textarea>      
       <span class="erro" id="erro-post-vazio"></span>
+      <div class="botoes">
       <button type="submit" id="btnPublicar" class="btnPubli">Publicar</button>
+      <img src=${excluir} alt="Excluir" title="Excluir" id="apagaTexto">
+      </div>
       </div>    
   `;
 
