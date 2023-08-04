@@ -82,8 +82,8 @@
   }
 
   .img-CBD {
-    width: 325px;
-    height: 325px;
+    width: 280px;
+    height: 280px;
     /* left: 20%;
     top: 30%; */
     top: 30%;
@@ -94,8 +94,8 @@
     height: 109px;
     /* left: 19.5%;
     top: 55%; */
-    font-size: 30px;
-    top: 58%;
+    font-size: 25px;
+    top: 65%;
   }
   
   .container-text {
@@ -106,16 +106,53 @@
     65% + 109px
   ); */
   top: calc(
-    67% + 109px
+    65% + 109px
   );
-    font-size: 26px;
+    font-size: 20px;
   }
 }
 
 @media screen and (min-width: 992px) { /*laptops/desktops*/
-  
+
+  .container-h1 {
+      width: 234px;
+      height: 109px;
+      /* left: 19.5%;
+      top: 55%; */
+      font-size: 25px;
+      top: 60%;
+    }
+
+  .container-text {
+      width: 500px;
+      height: 440.539px;
+      /* left: 19.5%;
+      top: calc(
+      65% + 109px
+    ); */
+      top: calc(65% + 109px);
+      font-size: 25px;
+    }
 }
 
 @media screen and (min-width: 1200px) { /*large laptops*/
-
+  .container-h1 {
+      width: 234px;
+      height: 109px;
+      /* left: 19.5%;
+        top: 55%; */
+      font-size: 30px;
+      top: 56%;
+    }
+  
+    .container-text {
+      width: 500px;
+      height: 440.539px;
+      /* left: 19.5%;
+        top: calc(
+        65% + 109px
+      ); */
+      top: calc(65% + 109px);
+      font-size: 25.5px;
+    }
 }

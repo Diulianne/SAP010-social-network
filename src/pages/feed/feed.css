@@ -65,11 +65,11 @@
  	margin: 0 2%;
  }
 
- .botoes{
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
-	margin-bottom: 10px;
+ .botoes {
+ 	display: flex;
+ 	align-items: flex-end;
+ 	justify-content: center;
+ 	margin-bottom: 10px;
  }
 
  .btnPubli {
@@ -129,8 +129,8 @@
 
  #apagaTexto {
  	cursor: pointer;
-	margin-left: 10px;
-	width: 22px;
+ 	margin-left: 10px;
+ 	width: 22px;
  }
 
  @media screen and (min-width: 768px) {
@@ -165,9 +165,11 @@
  		margin-left: auto;
  		margin-right: auto;
  		margin-top: 6vh;
-		overflow: hidden;
+ 		overflow: hidden;
+		padding-bottom: 1px;
  	}
 
+	
  	.text-area,
  	.espacoBranco {
  		width: 70vw;
@@ -175,7 +177,9 @@
  		overflow-y: hidden;
 
  	}
-
+	.botoes{
+		margin:0;
+	}
  	.nome-usuario {
  		color: #F6F2E2;
  		margin-top: 1.5vw;
@@ -183,6 +187,12 @@
  		font-size: 20px;
  	}
 
+ 	.actionBtnPost {
+ 		display: flex;
+ 		justify-content: space-between;
+ 		margin-left: 5%;
+ 	}
+	
  	.footer {
  		display: flex;
  		flex-direction: column;
@@ -196,18 +206,11 @@
  		background-color: #f6f2e200;
  	}
 
- 	.actionBtnPost {
- 		display: flex;
- 		justify-content: space-between;
- 		margin-left: 5%;
-
- 	}
-
  	.nomeTipo {
  		display: flex;
  		flex-direction: column;
  		align-items: flex-start;
- 		margin: 3%;
+ 		margin: 1%;
  		margin-left: 7%;
  	}
  }

@@ -27,12 +27,12 @@ export default async () => {
   <figure><img id="perfil" class="img-perfil" src=${imgPerfil} alt="Imagem de Perfil" title="Sua foto de Perfil"></figure>
   <p> MEU PERFIL </p>
   <p> SOU PACIENTE </p>
- 
-  <div>
-  <p class="input centro"> ${dados.displayName} </p>
-  <p class="input centro"> ${dados.email} </p>
-  </div>
   </section>
+  <div>
+  <p class="input centro margin"> ${dados.displayName} </p>
+  <p class="input centro margin"> ${dados.email} </p>
+  </div>
+  
 
    <footer>
   <a href="#perfil" id="iconePerfil"><img class="iconesFooter" src=${perfil} alt="icone perfil" title="Ícone Perfil"></a>
