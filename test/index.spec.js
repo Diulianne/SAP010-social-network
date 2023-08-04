@@ -2,14 +2,14 @@
 /* eslint-disable no-unused-vars */
 import {
   createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword, signOut,
-  onAuthStateChanged,
+  onAuthStateChanged, updateProfile,
 } from 'firebase/auth';
 import {
   doc, updateDoc, db, collection, addDoc, deleteDoc,
 } from 'firebase/firestore';
 import {
   criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual, deletarPost,
-  manipularMudancaHash, criarPost,
+  manipularMudancaHash, atualizaPerfil, criarPost,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 import { auth } from '../src/firebaseInit.config.js';
@@ -171,5 +171,16 @@ describe('Função criar Post', () => {
       data: mockTimestamp,
     });
     expect(document).toEqual({ id: 'mockPostId' });
+ });
+});
+
+describe('atualizar o perfil', () => {
+  it('deve chamar a função updateProfile e atualizar o nome do perfil', () => {
+    const nome = 'aleatorio';
+    getAuth.mockReturnValueOnce(mockUser);
+    atualizaPerfil(nome);
+    expect(updateProfile).toHaveBeenCalledWith(undefined, {
+      displayName: nome,
+    });
   });
 });

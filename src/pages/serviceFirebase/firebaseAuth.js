@@ -11,15 +11,18 @@ import {
 } from 'firebase/firestore';
 import { app, db } from '../../firebaseInit.config.js';
 
-export const auth = getAuth(app);
+const auth = getAuth(app);
 
 const criarUsuario = async (email, senha) => {
   await createUserWithEmailAndPassword(auth, email, senha);
 };
 
-const atualizaPerfil = (nome) => updateProfile(auth.currentUser, { // testar
-  displayName: nome,
-});
+const atualizaPerfil = (nome) => {
+  const currentUser = getAuth(app).currentUser;
+  updateProfile(currentUser, { // testar
+    displayName: nome,
+  });
+};
 
 const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
 
@@ -92,5 +95,5 @@ export {
   criarUsuario, login,
   loginGoogle, createUserWithEmailAndPassword, criarPost,
   deslogar, fetchData, usuarioAtual, atualizaPerfil, manipularMudancaHash, deletarPost,
-  editarPost,
+  editarPost, auth,
 };
