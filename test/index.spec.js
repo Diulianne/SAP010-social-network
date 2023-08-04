@@ -16,6 +16,7 @@ import { auth } from '../src/firebaseInit.config.js';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
+jest.mock('../src/firebaseInit.config.js');
 
 beforeEach(() => {
   jest.clearAllMocks();
