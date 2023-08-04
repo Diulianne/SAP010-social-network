@@ -2,14 +2,14 @@
 /* eslint-disable no-unused-vars */
 import {
   createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword, signOut,
-  onAuthStateChanged, updateProfile,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import {
-  doc, updateDoc, db, collection, addDoc, deleteDoc,
+  doc, updateDoc, db, collection, addDoc, deleteDoc, auth,
 } from 'firebase/firestore';
 import {
   criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual, deletarPost,
-  manipularMudancaHash,
+  manipularMudancaHash, criarPost,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
@@ -120,5 +120,27 @@ describe('deletarPost', () => {
 describe('manipularMudancaHash ', () => {
   it('deveria ser uma função', () => {
     expect(typeof manipularMudancaHash).toBe('function');
+  });
+});
+
+describe('Função criar Post', () => {
+  it('deve criar um post e guardar na coleção', async () => {
+    auth.currentUser = {
+      uid: '123123456',
+      displayName: 'Nome do usuário',
+    };
+
+    const post = {
+      mensagem: 'postagem',
+      user_id: '12345678',
+      nome: 'username',
+      data: '12/01/2022',
+    };
+    const querySnapshot = addDoc.mockResolvedValueOnce(mockUser);
+
+    await criarPost(post.mensagem);
+      expect(querySnapshot).toHaveBeenCalledTimes(1);
+      expect(addDoc).toHaveBeenCalledWith(collection(db, 'Post'), post);
+      expect(addDoc).toHaveBeenCalledTimes(1);
   });
 });

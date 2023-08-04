@@ -54,7 +54,7 @@ const usuarioAtual = () => new Promise((resolve) => {
   });
 });
 
-const criarPost = async (mensagem) => { // testar Diuli
+const criarPost = async (mensagem) => {
   try {
     const user = await usuarioAtual();
     if (!user) {
@@ -77,7 +77,6 @@ const criarPost = async (mensagem) => { // testar Diuli
 
 const deletarPost = async (postId) => { // testar
   const docRef = doc(db, 'Post', postId);
-  console.log('este é o ', postId);
   await deleteDoc(docRef);
 };
 
