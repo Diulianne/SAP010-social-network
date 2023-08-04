@@ -55,24 +55,14 @@ const usuarioAtual = () => new Promise((resolve) => {
 });
 
 const criarPost = async (mensagem) => {
-  try {
-    const user = await usuarioAtual();
-    if (!user) {
-      console.log('Usuário não autenticado');
-      return;
-    }
+  const novoPost = {
+    mensagem,
+    user_id: auth.currentUser.uid,
+    nome: auth.currentUser.displayName,
+    data: new Date(),
+  };
 
-    const novoPost = {
-      mensagem,
-      user_id: user.uid,
-      nome: user.displayName,
-      data: new Date(),
-    };
-
-    await addDoc(collection(db, 'Post'), novoPost);
-  } catch (error) {
-    console.error('Erro ao criar o post:', error);
-  }
+  await addDoc(collection(db, 'Post'), novoPost);
 };
 
 const deletarPost = async (postId) => { // testar

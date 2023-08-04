@@ -5,12 +5,14 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import {
-  doc, updateDoc, db, collection, addDoc, deleteDoc, auth,
+  doc, updateDoc, db, collection, addDoc, deleteDoc,
 } from 'firebase/firestore';
 import {
   criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual, deletarPost,
   manipularMudancaHash, criarPost,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
+
+import { auth } from '../src/firebaseInit.config.js';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
@@ -123,24 +125,50 @@ describe('manipularMudancaHash ', () => {
   });
 });
 
+// describe('Função criar Post', () => {
+//   it('deve criar um post e guardar na coleção', async () => {
+//     auth.currentUser = {
+//       uid: '123123456',
+//       displayName: 'Nome do usuário',
+//     };
+
+//     const post = {
+//       mensagem: 'postagem',
+//       user_id: '12345678',
+//       nome: 'username',
+//       data: '12/01/2022',
+//     };
+//     const querySnapshot = addDoc.mockResolvedValueOnce(mockUser);
+
+//     await criarPost(post.mensagem);
+//       expect(querySnapshot).toHaveBeenCalledTimes(1);
+//       expect(addDoc).toHaveBeenCalledWith(collection(db, 'Post'), post);
+//       expect(addDoc).toHaveBeenCalledTimes(1);
+//   });
+// });
+
 describe('Função criar Post', () => {
   it('deve criar um post e guardar na coleção', async () => {
+    const mockMensagem = 'teste123';
+    const mockTimestamp = 1689688182295;
+    const mockAddDoc = jest.fn();
+
+    addDoc.mockResolvedValueOnce({ id: 'mockPostId' });
+
     auth.currentUser = {
-      uid: '123123456',
-      displayName: 'Nome do usuário',
+      uid: '123456789',
+      displayName: 'nomeusuario',
     };
 
-    const post = {
-      mensagem: 'postagem',
-      user_id: '12345678',
-      nome: 'username',
-      data: '12/01/2022',
-    };
-    const querySnapshot = addDoc.mockResolvedValueOnce(mockUser);
+    Date.getTime = jest.fn(() => mockTimestamp);
 
-    await criarPost(post.mensagem);
-      expect(querySnapshot).toHaveBeenCalledTimes(1);
-      expect(addDoc).toHaveBeenCalledWith(collection(db, 'Post'), post);
-      expect(addDoc).toHaveBeenCalledTimes(1);
+    const document = await criarPost(mockMensagem);
+    expect(mockAddDoc).toHaveBeenCalledWith(collection(db, 'Post'), {
+      mensagem: mockMensagem,
+      user_id: auth.currentUser.uid,
+      nome: auth.currentUser.displayName,
+      data: mockTimestamp,
+    });
+    expect(document).toEqual({ id: 'mockPostId' });
   });
 });
