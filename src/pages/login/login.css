@@ -27,7 +27,7 @@ body {
 
 nav {
   display: flex;
-  width: 100vw;
+  justify-content: center;
 }
 
 ul {
@@ -60,19 +60,14 @@ ul {
 }
 
 .img-CBD1 {
-  width: 231px;
-  height: 205px;
+  width: 157px;
+  height: 139px;
   background-size: cover;
   position: fixed;
   top: 17%;
   left: 50%;
   transform: translate(-50%, -50%);
-  flex-shrink: 0; /* Alterei para flex-shrink: 0 para evitar encolhimento */
-  /* display: flex;
-	justify-content: center;
-	margin-bottom: 1rem;
-	position: relative;
-	left: 10%; */
+  flex-shrink: 0;
 }
 
 .form-entrar {
@@ -89,10 +84,10 @@ ul {
   background-color: #ccdfd4;
   padding: 1%;
   display: flex;
-  margin-top: 1.7rem;
+  margin: 1.7rem 1.2rem 0 0.3rem;
   align-items: start;
-  border-radius: 8px;
-  width: 228px;
+  border-radius: 10px;
+  width: 218px;
   height: 32px;
   box-shadow: 1px 2px 5px 1px gray;
 }
@@ -103,7 +98,7 @@ ul {
 
 .entrar {
   color: rgba(0, 0, 0, 0.6);
-  margin: 2rem 3rem 2rem 0;
+  margin: 2rem 3rem 2rem 0.3rem;
   padding-top: 3.5%;
 }
 
@@ -127,17 +122,60 @@ ul {
 }
 
 .texto1 {
-	color: rgba(24, 119, 242, 0.99);
-	text-align: center;
-	font-size: 12px;
-	font-family: "Inter", sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
+  color: rgba(24, 119, 242, 0.99);
+  text-align: center;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .login-redes {
   display: flex;
   justify-content: space-around;
   margin-bottom: 2rem;
+}
+
+.erroLogin {
+  color: #e63636;
+  font-size: 12px;
+  margin-right: 30px
+}
+
+
+@media screen and (min-width: 768px) {
+  body {
+    background-image: url(../imagens/CBDCNNCT-IMG/BG_feedDesktop.png);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .img-CBD1 {
+    width: 185px;
+    height: 164px;
+  }
+
+  .container {
+    background: #eef4f000;
+    border: 1px solid #aeaeae00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
+
+  }
+
+  .ou {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+.img-CBD1 {
+    width: 231px;
+    height: 205px;
+  }
 }
