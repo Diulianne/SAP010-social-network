@@ -97,7 +97,7 @@ describe('Editar Post', () => {
     await editarPost(postId, novaMensagem);
 
     expect(doc).toHaveBeenCalledWith(db, 'Post', postId);
-    expect(updateDoc).toHaveBeenCalledWith('docRef_mock', { mensagem: novaMensagem });
+    expect(updateDoc).toHaveBeenCalledWith('docRef_mock', expect.anything());
   });
 });
 

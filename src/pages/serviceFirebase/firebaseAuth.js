@@ -73,11 +73,16 @@ const deletarPost = async (postId) => { // testar
   await deleteDoc(docRef);
 };
 
+// const editarPost = async (postId, novaMensagem) => {
+//   const refDoc = doc(db, 'Post', postId);
+//   await updateDoc(refDoc, {
+//     mensagem: novaMensagem,
+//   });
+// };
+
 const editarPost = async (postId, novaMensagem) => {
-  const refDoc = doc(db, 'Post', postId);
-  await updateDoc(refDoc, {
-    mensagem: novaMensagem,
-  });
+  const docRef = doc(db, 'Post', postId);
+  return updateDoc(docRef, novaMensagem);
 };
 
 const manipularMudancaHash = async () => { // testar
