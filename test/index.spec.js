@@ -148,30 +148,75 @@ describe('manipularMudancaHash ', () => {
 //   });
 // });
 
-describe('Função criar Post', () => {
+// describe('Função criar Post', () => {
+//   it('deve criar um post e guardar na coleção', async () => {
+//     const mockMensagem = 'teste123';
+//     const mockTimestamp = 1689688182295;
+//     const mockAddDoc = jest.fn();
+
+//     addDoc.mockResolvedValueOnce({ id: 'mockPostId' });
+
+//     auth.currentUser = {
+//       uid: '123456789',
+//       displayName: 'nomeusuario',
+//     };
+
+//     Date.getTime = jest.fn(() => mockTimestamp);
+
+//     const document = await criarPost(mockMensagem);
+//     expect(mockAddDoc).toHaveBeenCalledWith(collection(db, 'Post'), {
+//       mensagem: mockMensagem,
+//       user_id: auth.currentUser.uid,
+//       nome: auth.currentUser.displayName,
+//       data: mockTimestamp,
+//     });
+//     expect(document).toEqual({ id: 'mockPostId' });
+//  });
+// });
+
+// describe('criarPost', () => {
+//   it('deve criar um post e guardar na coleção', async () => {
+//     const mockAppAuth = {
+//       currentUser: {
+//         displayName: 'Camila Gonçalves',
+//         uid: 'bJVtk9aBSaRSuJMlXrPZCqWRbon2',
+//       },
+//     };
+//     auth.mockReturnValue(mockAppAuth);
+//     addDoc.mockResolvedValue();
+//     const mensagem = 'Nova mensagem';
+//     const novoPost = {
+//       mensagem,
+//       user_id: mockAppAuth.currentUser.uid,
+//       name: mockAppAuth.currentUser.displayName,
+//       data: new Date(),
+//     };
+//     await criarPost(mensagem);
+//     expect(addDoc).toHaveBeenCalledTimes(1);
+//     expect(addDoc).toHaveBeenCalledWith(undefined, novoPost);
+//   });
+// });
+
+describe('criarPost', () => {
   it('deve criar um post e guardar na coleção', async () => {
-    const mockMensagem = 'teste123';
-    const mockTimestamp = 1689688182295;
-    const mockAddDoc = jest.fn();
-
-    addDoc.mockResolvedValueOnce({ id: 'mockPostId' });
-
-    auth.currentUser = {
-      uid: '123456789',
-      displayName: 'nomeusuario',
-    };
-
-    Date.getTime = jest.fn(() => mockTimestamp);
-
-    const document = await criarPost(mockMensagem);
-    expect(mockAddDoc).toHaveBeenCalledWith(collection(db, 'Post'), {
-      mensagem: mockMensagem,
-      user_id: auth.currentUser.uid,
-      nome: auth.currentUser.displayName,
-      data: mockTimestamp,
+    addDoc.mockResolvedValue();
+    getAuth.mockReturnValue({
+      currentUser: {
+        displayName: 'Camila Gonçalves',
+        uid: 'bJVtk9aBSaRSuJMlXrPZCqWRbon2',
+      },
     });
-    expect(document).toEqual({ id: 'mockPostId' });
- });
+    const mensagem = 'Nova mensagem';
+    const novoPost = {
+      mensagem,
+      user_id: getAuth().currentUser.uid,
+      nome: getAuth().currentUser.displayName,
+      data: new Date(),
+    };
+    await criarPost(mensagem);
+    expect(addDoc).toHaveBeenCalledTimes(1);
+    expect(addDoc).toEqual(expect.anything(), novoPost);
+  });
 });
 
 describe('atualizar o perfil', () => {

@@ -60,12 +60,13 @@ const usuarioAtual = () => new Promise((resolve) => {
 const criarPost = async (mensagem) => {
   const novoPost = {
     mensagem,
-    user_id: auth.currentUser.uid,
-    nome: auth.currentUser.displayName,
+    user_id: getAuth().currentUser.uid,
+    nome: getAuth().currentUser.displayName,
     data: new Date(),
   };
 
   await addDoc(collection(db, 'Post'), novoPost);
+
 };
 
 const deletarPost = async (postId) => { // testar
