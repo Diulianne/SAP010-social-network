@@ -1,8 +1,7 @@
 import {
   getAuth,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut,
+  createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut,
   updateProfile,
 } from 'firebase/auth';
 import {
@@ -35,7 +34,7 @@ const loginGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 
-const fetchData = async () => { // testar
+const fetchData = async () => {
   const q = query(collection(db, 'Post'), orderBy('data', 'desc'));
   const querySnapshot = await getDocs(q);
   console.log('querySnapshot:', querySnapshot);
@@ -50,18 +49,21 @@ const fetchData = async () => { // testar
   return posts; // Retorna o array com os dados das postagens
 };
 
-const auth1 = getAuth();
-const usuarioAtual = () => new Promise((resolve) => {
-  onAuthStateChanged(auth1, (user) => {
-    resolve(user);
-  });
-});
+// const auth1 = getAuth();
+// const usuarioAtual = () => new Promise((resolve) => {
+//   onAuthStateChanged(auth1, (user) => {
+//     resolve(user);
+//   });
+// });
+// const user = getAuth().currentUser;
+// const usuarioAtual = () => onAuthStateChanged(getAuth(), (user));
+// const usuarioAtual = () => auth.currentUser;
 
 const criarPost = async (mensagem) => {
   const novoPost = {
     mensagem,
-    user_id: auth.currentUser.uid,
-    nome: auth.currentUser.displayName,
+    user_id: getAuth().currentUser.uid,
+    nome: getAuth().currentUser.displayName,
     data: new Date(),
   };
 
@@ -85,20 +87,9 @@ const editarPost = async (postId, novaMensagem) => {
   return updateDoc(docRef, novaMensagem);
 };
 
-const manipularMudancaHash = async () => { // testar
-  const estaLogado = await usuarioAtual();
-  const novaHash = window.location.hash;
-
-  if (!estaLogado && novaHash !== '#login') {
-    // Se o usuário não estiver logado e a nova hash não for "#login",
-    // redireciona para a página de login
-    window.location.hash = '#login';
-  }
-};
-
 export {
   criarUsuario, login,
   loginGoogle, createUserWithEmailAndPassword, criarPost,
-  deslogar, fetchData, usuarioAtual, atualizaPerfil, manipularMudancaHash, deletarPost,
+  deslogar, fetchData, atualizaPerfil, deletarPost,
   editarPost, auth,
 };
