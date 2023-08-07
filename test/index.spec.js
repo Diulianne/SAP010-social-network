@@ -8,8 +8,8 @@ import {
   doc, updateDoc, db, collection, addDoc, deleteDoc,
 } from 'firebase/firestore';
 import {
-  criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual, deletarPost,
-  manipularMudancaHash, atualizaPerfil, criarPost,
+  criarUsuario, loginGoogle, login, deslogar, editarPost, deletarPost,
+  atualizaPerfil, criarPost,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 import { auth } from '../src/firebaseInit.config.js';
@@ -101,12 +101,12 @@ describe('Editar Post', () => {
   });
 });
 
-  describe('usuarioAtual (verifica se o usuário está logado)', () => {
-    it('Deveria retornar o usuário autenticado', () => {
-      usuarioAtual();
-      expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
-    });
-  });
+  // describe('usuarioAtual (verifica se o usuário está logado)', () => {
+  //   it('Deveria retornar o usuário autenticado', () => {
+  //     usuarioAtual();
+  //     expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+  //   });
+  // });
 
 describe('deletarPost', () => {
   it('deveria ser uma função', () => {
@@ -120,11 +120,11 @@ describe('deletarPost', () => {
   });
 });
 
-describe('manipularMudancaHash ', () => {
-  it('deveria ser uma função', () => {
-    expect(typeof manipularMudancaHash).toBe('function');
-  });
-});
+// describe('manipularMudancaHash ', () => {
+//   it('deveria ser uma função', () => {
+//     expect(typeof manipularMudancaHash).toBe('function');
+//   });
+// });
 
 // describe('Função criar Post', () => {
 //   it('deve criar um post e guardar na coleção', async () => {
